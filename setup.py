@@ -56,8 +56,8 @@ def get_extensions():
 
     sources = [os.path.join(extensions_dir, s) for s in sources]
 
-    eigen_include_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'external', 'eigen3'))
-
+    # eigen_include_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'external', 'eigen3'))
+    eigen_include_dir="/usr/local/include/eigen3" 
     include_dirs = [
         get_pybind_include(),
         get_pybind_include(user=True),
@@ -67,7 +67,7 @@ def get_extensions():
 
     ext_modules = [
         extension(
-            "NeuralNRT._C",
+            "nnrt_cpp",
             sources,
             include_dirs=include_dirs,
             define_macros=define_macros,

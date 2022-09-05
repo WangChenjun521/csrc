@@ -3,9 +3,10 @@
 #include "cpu/image_proc.h"
 #include "cpu/graph_proc.h"
 
+#include "cuda/cuda_test.h"
 // Definitions of all methods in the module.
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
-
+  //cpu
   m.def("compute_augmented_flow_from_rotation", 
         &image_proc::compute_augmented_flow_from_rotation, 
         "Computes an optical flow image that reflects the augmentation applied to the source and target images.");
@@ -37,4 +38,7 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
   m.def("compute_pixel_anchors_euclidean", &graph_proc::compute_pixel_anchors_euclidean, "Computes anchor ids and skinning weights for every pixel using Euclidean distances");
   m.def("update_pixel_anchors", &graph_proc::update_pixel_anchors, "Updates pixel anchor after node id change");
   m.def("construct_regular_graph", &graph_proc::construct_regular_graph, "Samples graph uniformly in pixel space, and computes pixel anchors");
+
+  //cuda
+  m.def("cuda_test", &cuda_test::test, "Test cuda and Output Hello! ");
 }
